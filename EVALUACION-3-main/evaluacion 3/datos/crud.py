@@ -1,4 +1,3 @@
-# datos/crud.py
 from modelos.publicaciones import Base, Publicacion
 from datos.conexión import engine, session
 
