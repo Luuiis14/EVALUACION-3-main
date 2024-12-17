@@ -3,52 +3,48 @@ import requests
 class JSONPlaceholderService:
     BASE_URL = "https://jsonplaceholder.typicode.com"
 
-    @staticmethod
+  
     def obtener_posts():
         response = requests.get(f"{JSONPlaceholderService.BASE_URL}/posts")
         return response.json() if response.status_code == 200 else []
 
-    @staticmethod
+
     def obtener_comentarios():
         response = requests.get(f"{JSONPlaceholderService.BASE_URL}/comments")
         return response.json() if response.status_code == 200 else []
 
-    @staticmethod
+    
     def obtener_albums():
         response = requests.get(f"{JSONPlaceholderService.BASE_URL}/albums")
         return response.json() if response.status_code == 200 else []
 
-    @staticmethod
     def obtener_fotos():
         response = requests.get(f"{JSONPlaceholderService.BASE_URL}/photos")
         return response.json() if response.status_code == 200 else []
 
-    @staticmethod
+    
     def obtener_tareas():
         response = requests.get(f"{JSONPlaceholderService.BASE_URL}/todos")
         return response.json() if response.status_code == 200 else []
 
-    @staticmethod
+    
     def obtener_usuarios():
         response = requests.get(f"{JSONPlaceholderService.BASE_URL}/users")
         return response.json() if response.status_code == 200 else []
 
-    @staticmethod
+    
     def crear_post(post_data):
         response = requests.post(f"{JSONPlaceholderService.BASE_URL}/posts", json=post_data)
         return response.json() if response.status_code == 201 else {"error": "No se pudo crear el post"}
  
  
- # Importar todo lo necesario
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-# Conexión a la base de datos SQLite
 engine = create_engine("sqlite:///mi_base.db")
 Session = sessionmaker(bind=engine)
 session = Session()
 
-# Menú para obtener datos de la API
 def obtener_datos_api():
     print("\nSeleccione tipo de datos:")
     print("1. Posts")
@@ -75,7 +71,6 @@ def obtener_datos_api():
     else:
         print("Opción inválida")
 
-# Función para enviar datos a la API
 def enviar_datos_api():
     nuevo_post = {
         'title': input("Ingrese título del post: "),
@@ -86,7 +81,6 @@ def enviar_datos_api():
     respuesta = JSONPlaceholderService.crear_post(nuevo_post)
     print("Respuesta de la API:", respuesta)
 
-# Ejecución principal
 if __name__ == "__main__":
     print("\nSeleccione una operación:")
     print("1. Obtener datos de la API")
