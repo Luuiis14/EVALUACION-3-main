@@ -1,4 +1,3 @@
-# main.py
 from negocio.encriptacion import encriptar, desencriptar
 from negocio.procesamientos import procesar_y_guardar
 from datos.crud import obtener_publicaciones
